@@ -1,12 +1,11 @@
-{
-  "name": "bot",
-  "version": "1.0.0",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "discord.js": "^14.0.0"
-  }
-}
+import { Client, GatewayIntentBits } from "discord.js";
+
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds]
+});
+
+client.once("ready", () => {
+  console.log(`Logged in as ${client.user.tag}`);
+});
+
+client.login(process.env.TOKEN);
